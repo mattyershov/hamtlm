@@ -1,11 +1,24 @@
-def ascii_to_bin(data:string):
-    data_list = data.split()
+def to_binary(data:str, delimiter:str):
+    data_list = data.split(delimiter)
     data_bin = []
+    for n in data_list:
+        data_bin.append(format(ord(n)))
+    return data_bin
     
+def to_binary(data:str):
+    data_list = list(data)
+    data_bin = []
+    for n in data_list:
+        data_bin.append(format(ord(n)))
+    return data_bin
 
-def qam16_format(data_str: str):
+def qam16_format(data:list):
+
+    for i : data:
+        
+    data = str(data)
     # Ensure that data is a string of bits
-    chunks = [data_str[i:i+4] for i in range(0, len(data_str), 4)]
+    chunks = [data[i:i+4] for i in range(0, len(data), 4)]
     
     preamble_iq_vals = [+1, +1, +1, -1, -1, -1, +1, -1, -1, +1, -1]
 
@@ -48,4 +61,8 @@ def encode(iq_values: list, carr_af: int = 1800, rate: int = 44100, duration: fl
     scipy.io.wavfile.write("outputs/qam.wav", rate, cont_wave)
 
 def main():
-    data = ""
+    data = to_binary("Hello World")
+    encode(qam16_format(data))
+
+if __name__ == "__main__":
+    main()
