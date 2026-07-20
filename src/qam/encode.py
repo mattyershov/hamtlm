@@ -13,9 +13,11 @@ def to_binary(data:str):
     return data_bin
 
 def qam16_format(data:list):
+    data_str = ""
+    for d in data:
+        data_str += d
+    data = data_str
 
-    for i : data:
-        
     data = str(data)
     # Ensure that data is a string of bits
     chunks = [data[i:i+4] for i in range(0, len(data), 4)]
